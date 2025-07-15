@@ -7,6 +7,7 @@ import librosa
 from spleeter.separator import Separator
 import whisper
 
+# Global models
 whisper_model = whisper.load_model("base")
 separator = Separator('spleeter:2stems')
 
@@ -18,10 +19,7 @@ def extract_audio(input_path):
         return out
     return input_path
 
-# (Include trim_audio, normalize_audio, separate_vocals, transcribe_audio, convert_to_mp3 as before)
-
-def process_pipeline(file_path, start, end, steps):
-  def trim_audio(audio_path, start_sec, end_sec):
+def trim_audio(audio_path, start_sec, end_sec):
     y, sr = librosa.load(audio_path, sr=None)
     trimmed = y[int(start_sec * sr):int(end_sec * sr)]
     temp_path = tempfile.mktemp(suffix=".wav")
@@ -80,4 +78,4 @@ def process_pipeline(file_path, start_sec, end_sec, steps):
     if "transcribe" in steps:
         result["transcription"] = transcribe_audio(trimmed_wav)
 
-    return result  
+    return result
