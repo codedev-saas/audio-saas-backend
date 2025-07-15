@@ -9,3 +9,4 @@ git+https://github.com/openai/whisper.git
 spleeter==2.1.0
 nest-asyncio==1.6.0
 numpy==1.18.5
+python==3.10
