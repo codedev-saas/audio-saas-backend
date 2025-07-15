@@ -1,3 +1,5 @@
+from pipeline import process_pipeline
+
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
